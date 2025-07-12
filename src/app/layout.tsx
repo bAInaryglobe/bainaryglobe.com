@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import GradientBackground from "@/components/GradientBackground";
-import ThreeScene from "@/components/ThreeScene";
+import ThreeScene from "@/components/ui/ThreeScene";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
