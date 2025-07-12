@@ -1,4 +1,4 @@
-import React from "react";
+import { Paper, Typography, Box, Chip } from "@mui/material";
 
 type Props = {
   name: string;
@@ -9,17 +9,17 @@ type Props = {
 
 export default function ProductCard({ name, description, standalone, ourApp }: Props) {
   return (
-    <div className="rounded-xl shadow-2xl bg-gradient-to-br from-yellow-100 via-brown-200 to-green-100 p-6 mb-4 transition-transform hover:scale-105">
-      <div className="font-bold text-lg text-brown-900">{name}</div>
-      <div className="text-brown-700 mb-2">{description}</div>
-      <div className="flex gap-2 text-xs">
-        <span className={`px-2 py-1 rounded bg-brown-300 text-brown-900`}>
-          {standalone ? "Standalone" : "Integrated"}
-        </span>
-        <span className={`px-2 py-1 rounded ${ourApp ? "bg-green-300 text-green-900" : "bg-yellow-300 text-yellow-900"}`}>
-          {ourApp ? "Our App" : "Third Party"}
-        </span>
-      </div>
-    </div>
+    <Paper elevation={4} sx={{ p: 3, mb: 2, borderRadius: 3, bgcolor: "#f5e9d6" }}>
+      <Typography variant="h6" color="#6b3f19" fontWeight="bold">
+        {name}
+      </Typography>
+      <Typography color="#a67c52" sx={{ mb: 1 }}>
+        {description}
+      </Typography>
+      <Box sx={{ display: "flex", gap: 1 }}>
+        <Chip label={standalone ? "Standalone" : "Integrated"} sx={{ bgcolor: "#a67c52", color: "#fff" }} />
+        <Chip label={ourApp ? "Our App" : "Third Party"} sx={{ bgcolor: ourApp ? "#b2d8b2" : "#e6c200", color: "#6b3f19" }} />
+      </Box>
+    </Paper>
   );
 }

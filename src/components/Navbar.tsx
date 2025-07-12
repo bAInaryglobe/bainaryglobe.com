@@ -1,16 +1,31 @@
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="w-full px-6 py-4 bg-gradient-to-r from-brown-800 via-yellow-300 to-green-100 shadow-xl flex items-center justify-between">
-      <div className="font-extrabold text-xl text-brown-900">BainaryGlobe</div>
-      <div className="flex gap-6">
-        <Link href="/" className="hover:underline text-brown-900 font-semibold">Home</Link>
-        <Link href="/about" className="hover:underline text-brown-900 font-semibold">About</Link>
-        <Link href="/products" className="hover:underline text-brown-900 font-semibold">Products</Link>
-        <Link href="/blog" className="hover:underline text-brown-900 font-semibold">Blog</Link>
-        <Link href="/admin" className="hover:underline text-green-700 font-semibold">Admin</Link>
-      </div>
-    </nav>
+    <AppBar position="static" sx={{ bgcolor: "#f5e9d6", boxShadow: 3 }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="h6" color="#6b3f19" fontWeight="bold">
+          BainaryGlobe
+        </Typography>
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Button component={Link} href="/" sx={{ color: "#6b3f19", fontWeight: "bold" }}>
+            Home
+          </Button>
+          <Button component={Link} href="/about" sx={{ color: "#6b3f19", fontWeight: "bold" }}>
+            About
+          </Button>
+          <Button component={Link} href="/products" sx={{ color: "#6b3f19", fontWeight: "bold" }}>
+            Products
+          </Button>
+          <Button component={Link} href="/blog" sx={{ color: "#6b3f19", fontWeight: "bold" }}>
+            Blog
+          </Button>
+          <Button component={Link} href="/admin" sx={{ color: "#3a7d3a", fontWeight: "bold" }}>
+            Admin
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }

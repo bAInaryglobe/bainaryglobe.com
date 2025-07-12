@@ -1,3 +1,12 @@
+import {
+	Box,
+	Typography,
+	Accordion,
+	AccordionSummary,
+	AccordionDetails,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 const faqs = [
 	{
 		q: "What makes BainaryGlobe different?",
@@ -15,16 +24,22 @@ const faqs = [
 
 export default function FAQSection() {
 	return (
-		<div className="mt-16 w-full max-w-3xl">
-			<h2 className="text-2xl font-bold text-brown-900 mb-4">FAQ</h2>
-			<ul>
-				{faqs.map((faq, idx) => (
-					<li key={idx} className="mb-6">
-						<div className="font-semibold text-brown-900">{faq.q}</div>
-						<div className="text-brown-700">{faq.a}</div>
-					</li>
-				))}
-			</ul>
-		</div>
+		<Box>
+			<Typography variant="h4" color="#6b3f19" fontWeight="bold" mb={2}>
+				FAQ
+			</Typography>
+			{faqs.map((faq, idx) => (
+				<Accordion key={idx} sx={{ mb: 2, bgcolor: "#f5e9d6" }}>
+					<AccordionSummary expandIcon={<ExpandMoreIcon />}>
+						<Typography color="#6b3f19" fontWeight="bold">
+							{faq.q}
+						</Typography>
+					</AccordionSummary>
+					<AccordionDetails>
+						<Typography color="#a67c52">{faq.a}</Typography>
+					</AccordionDetails>
+				</Accordion>
+			))}
+		</Box>
 	);
 }

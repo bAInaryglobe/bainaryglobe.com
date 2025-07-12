@@ -1,11 +1,9 @@
-import GradientBackground from "@/components/GradientBackground";
-import PageTransition from "@/components/PageTransition";
+import { Container, Box, Typography, Button, Grid, Paper } from "@mui/material";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnimatedButton from "@/components/AnimatedButton";
-import ProductCard from "@/components/ProductCard";
 import FAQSection from "@/components/FAQSection";
 import HeroSection from "@/components/home/HeroSection";
+import ProductCard from "@/components/ProductCard";
 import type { Products } from "@/types/appwrite.d.ts";
 
 // Example products (replace with Appwrite data later)
@@ -30,71 +28,100 @@ const products: Products[] = [
 	},
 ];
 
-// Example FAQ
-const faqs = [
-	{
-		q: "What makes BainaryGlobe different?",
-		a: "Ultra modular, permission-based, and scalable SaaS conglomerate with immersive app-like experience.",
-	},
-	{
-		q: "Can I use 'Sign in with BainaryGlobe' for my app?",
-		a: "Yes, both internal and third-party apps can integrate with our robust OAuth system.",
-	},
-	{
-		q: "How do admins manage content?",
-		a: "Privileged users can edit, create, and manage all site content live from the frontend.",
-	},
-];
-
 export default function HomePage() {
 	return (
-		<main className="relative min-h-screen flex flex-col">
-			<GradientBackground />
+		<Container
+			maxWidth="lg"
+			sx={{
+				minHeight: "100vh",
+				display: "flex",
+				flexDirection: "column",
+				bgcolor: "#f5e9d6",
+				p: 0,
+			}}
+		>
 			<Navbar />
-			<PageTransition>
-				<section className="flex flex-col items-center justify-center flex-1 z-10 pt-24 pb-16">
-					<HeroSection />
-					{/* Products Section */}
-					<div className="mt-12 w-full max-w-3xl">
-						<h2 className="text-2xl font-bold text-brown-900 mb-4">
-							Our Products
-						</h2>
+			<Box component="main" sx={{ flex: 1, pt: 10, pb: 8 }}>
+				<HeroSection />
+				<Box sx={{ mt: 8 }}>
+					<Typography
+						variant="h4"
+						color="#6b3f19"
+						fontWeight="bold"
+						mb={2}
+					>
+						Our Products
+					</Typography>
+					<Grid container spacing={3}>
 						{products.map((prod, idx) => (
-							<ProductCard key={idx} {...prod} />
+							<Grid item xs={12} md={6} key={idx}>
+								<ProductCard {...prod} />
+							</Grid>
 						))}
-					</div>
-					{/* Features Section */}
-					<div className="mt-16 w-full max-w-4xl">
-						<h2 className="text-2xl font-bold text-brown-900 mb-4">
-							Key Features
-						</h2>
-						<ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
-							<li className="bg-yellow-200 rounded-xl shadow-3d p-6 text-brown-900 font-semibold">
-								Modular Products
-								<p className="text-brown-700 text-sm mt-2">
-									Each product is standalone or deeply integrated, managed live.
-								</p>
-							</li>
-							<li className="bg-brown-200 rounded-xl shadow-3d p-6 text-brown-900 font-semibold">
-								Live Admin Editing
-								<p className="text-brown-700 text-sm mt-2">
-									Admins and privileged users can update anything from the frontend.
-								</p>
-							</li>
-							<li className="bg-green-200 rounded-xl shadow-3d p-6 text-brown-900 font-semibold">
-								Robust OAuth
-								<p className="text-brown-700 text-sm mt-2">
-									'Sign in with BainaryGlobe' for all products and third-party apps.
-								</p>
-							</li>
-						</ul>
-					</div>
-					{/* FAQ Section */}
+					</Grid>
+				</Box>
+				<Box sx={{ mt: 10 }}>
+					<Typography
+						variant="h4"
+						color="#6b3f19"
+						fontWeight="bold"
+						mb={2}
+					>
+						Key Features
+					</Typography>
+					<Grid container spacing={3}>
+						<Grid item xs={12} md={4}>
+							<Paper elevation={3} sx={{ p: 3, bgcolor: "#f5e9d6" }}>
+								<Typography
+									variant="h6"
+									color="#6b3f19"
+									fontWeight="bold"
+								>
+									Modular Products
+								</Typography>
+								<Typography color="#a67c52" mt={1}>
+									Each product is standalone or deeply integrated,
+									managed live.
+								</Typography>
+							</Paper>
+						</Grid>
+						<Grid item xs={12} md={4}>
+							<Paper elevation={3} sx={{ p: 3, bgcolor: "#a67c52" }}>
+								<Typography
+									variant="h6"
+									color="#6b3f19"
+									fontWeight="bold"
+								>
+									Live Admin Editing
+								</Typography>
+								<Typography color="#c8b08b" mt={1}>
+									Admins and privileged users can update anything
+									from the frontend.
+								</Typography>
+							</Paper>
+						</Grid>
+						<Grid item xs={12} md={4}>
+							<Paper elevation={3} sx={{ p: 3, bgcolor: "#b2d8b2" }}>
+								<Typography
+									variant="h6"
+									color="#6b3f19"
+									fontWeight="bold"
+								>
+									Robust OAuth
+								</Typography>
+								<Typography color="#3a7d3a" mt={1}>
+									'Sign in with BainaryGlobe' for all products and
+									third-party apps.
+								</Typography>
+							</Paper>
+						</Grid>
+					</Grid>
+				</Box>
+				<Box sx={{ mt: 10 }}>
 					<FAQSection />
-				</section>
-			</PageTransition>
+				</Box>
+			</Box>
 			<Footer />
-		</main>
+		</Container>
 	);
 }
-	
